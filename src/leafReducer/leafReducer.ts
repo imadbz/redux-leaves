@@ -20,7 +20,7 @@ function leafReducer<
   reducersDict: CustomReducersT
 ): LeafT {
 
-  if (isCustomAction(action)) {
+//   if (isCustomAction(action)) {
 
     const {
       [action.leaf.creatorKey]: matchingDefinition
@@ -30,10 +30,11 @@ function leafReducer<
       return isLonghandReducer(matchingDefinition)
         ? matchingDefinition.reducer(leafState, action, treeState)
         : matchingDefinition(leafState, action, treeState)
-    } else {
-      return leafState
     }
-  }
+//     else {
+//       return leafState
+//     }
+//   }
 
   if (Array.isArray(leafState)) {
     return arrayLeafReducer(leafState, treeState, action, originalState)
